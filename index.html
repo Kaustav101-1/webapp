@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Skincare Habits — a short student survey</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div class="progress-track" id="progress-track" hidden>
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+    </div>
+    <header class="app-header" id="app-header" hidden>
+      <div class="eyebrow" id="section-eyebrow"></div>
+    </header>
+    <main class="app-main">
+      <div class="card" id="app-card"></div>
+    </main>
+    <footer class="app-footer" id="app-footer" hidden>
+      <div class="app-footer-inner">
+        <button class="btn btn-secondary" id="btn-back" type="button">Back</button>
+        <button class="btn btn-primary" id="btn-next" type="button">Next</button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="survey.js"></script>
+</body>
+</html>

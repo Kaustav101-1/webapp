@@ -1,0 +1,440 @@
+/* Group 11 — Minimalist Survey
+   Institutional, plain, high-contrast. No lifestyle-brand styling. */
+
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-bg: #ffffff;
+  --color-text: #1a1f24;
+  --color-muted: #5c6773;
+  --color-border: #d3d9df;
+  --color-border-strong: #aab2ba;
+  --color-accent: #1f4e6e;
+  --color-accent-dark: #163a52;
+  --color-accent-contrast: #ffffff;
+  --color-surface: #f4f6f8;
+  --color-surface-hover: #eaeef1;
+  --color-error: #a4231a;
+  --color-error-bg: #fbeceb;
+  --radius: 6px;
+  --max-width: 560px;
+  --tap-min: 44px;
+  --gap: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Author rules below set `display` on these elements, which otherwise
+   beats the UA stylesheet's [hidden] rule regardless of source order
+   (author origin always wins over user-agent origin). Restate it here
+   so toggling the `hidden` attribute in JS actually hides them. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 16px; /* iOS zoom prevention: never below 16px */
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Progress bar ---------- */
+.progress-track {
+  height: 4px;
+  width: 100%;
+  background: var(--color-surface);
+  flex-shrink: 0;
+}
+.progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  padding: 12px var(--gap) 0;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+}
+.app-header .eyebrow {
+  font-size: 13px;
+  color: var(--color-muted);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Main content ---------- */
+.app-main {
+  flex: 1;
+  display: flex;
+  padding: 24px var(--gap) 100px;
+}
+.card {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  animation: fade-in 0.25s ease;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+}
+
+h1.prompt,
+.prompt {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+.helper-text {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin: 0 0 18px;
+}
+
+/* ---------- Landing screen ---------- */
+.landing {
+  text-align: left;
+}
+.landing h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  line-height: 1.35;
+}
+.landing p {
+  font-size: 16px;
+  color: var(--color-text);
+  margin: 0 0 28px;
+}
+
+/* ---------- Form controls ---------- */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: var(--tap-min);
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--color-bg);
+}
+.option-row:hover {
+  background: var(--color-surface-hover);
+}
+.option-row input[type="radio"],
+.option-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--color-accent);
+}
+.option-row.checked {
+  border-color: var(--color-accent);
+  background: #eef4f8;
+}
+.option-row.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.option-row .option-label {
+  flex: 1;
+  align-self: center;
+}
+
+.option-followup {
+  margin: -2px 0 4px 0;
+  padding: 12px 14px 14px 46px;
+  border: 1px solid var(--color-accent);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  background: #eef4f8;
+}
+.followup-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.pill-btn {
+  min-height: var(--tap-min);
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-bg);
+  cursor: pointer;
+  font-size: 15px;
+  flex: 1 1 auto;
+  text-align: center;
+}
+.pill-btn.selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.text-input,
+select.native-select,
+textarea.text-area {
+  width: 100%;
+  min-height: var(--tap-min);
+  padding: 10px 12px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+textarea.text-area {
+  min-height: 90px;
+  resize: vertical;
+}
+.char-counter {
+  font-size: 12px;
+  color: var(--color-muted);
+  text-align: right;
+  margin-top: 4px;
+}
+
+/* ---------- Matrix (B1) ---------- */
+.matrix-row {
+  margin-bottom: 16px;
+}
+.matrix-row-label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.matrix-row .other-input {
+  margin-top: 8px;
+}
+
+/* ---------- Rank pickers ---------- */
+.rank-picker {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-border);
+}
+.rank-picker-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* ---------- Word picker (exact-3) ---------- */
+.word-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.word-chip {
+  min-height: var(--tap-min);
+  padding: 8px 16px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background: var(--color-bg);
+  cursor: pointer;
+  font-size: 15px;
+}
+.word-chip.selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+.word-chip.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.selection-counter {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-top: 10px;
+}
+
+/* ---------- NPS scale ---------- */
+.scale-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+.scale-btn {
+  min-height: var(--tap-min);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+.scale-btn.selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+.scale-endlabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--color-muted);
+  margin-top: 8px;
+}
+
+/* ---------- Consent ---------- */
+.consent-box {
+  padding: 16px;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+.consent-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--tap-min);
+}
+.consent-checkbox-row input {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--color-accent);
+}
+
+/* ---------- Errors ---------- */
+.field-error {
+  color: var(--color-error);
+  background: var(--color-error-bg);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+/* ---------- Footer nav ---------- */
+.app-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: 12px var(--gap);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+.app-footer-inner {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+}
+.btn {
+  min-height: var(--tap-min);
+  padding: 10px 22px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  flex: 1;
+}
+.btn-primary:disabled {
+  background: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+.btn-secondary {
+  background: var(--color-bg);
+  flex: 0 0 auto;
+}
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.btn-full {
+  width: 100%;
+}
+
+/* ---------- Thank-you / exit screens ---------- */
+.end-screen {
+  text-align: center;
+  padding-top: 40px;
+}
+.end-screen h1 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+.end-screen p {
+  color: var(--color-muted);
+  font-size: 16px;
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 700px) {
+  :root {
+    --max-width: 640px;
+  }
+  .app-main {
+    padding-top: 48px;
+  }
+  .landing h1 {
+    font-size: 28px;
+  }
+  .scale-grid {
+    grid-template-columns: repeat(11, 1fr);
+  }
+}
