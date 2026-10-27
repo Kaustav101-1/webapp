@@ -1,8 +1,7 @@
-# Group 11 — Minimalist Survey
+Minimalist Survey
 
-A short, mobile-first, branching consumer survey for an IIM Bangalore Marketing
-Management project on the skincare brand Minimalist. Plain HTML/CSS/JS, no
-framework, no build step.
+A short, mobile-first, branching consumer survey for a Marketing
+Management project on the skincare brand Minimalist. 
 
 - **Live survey:** https://webapp-pi-plum.vercel.app
 - **Apps Script Web App (backend):** `https://script.google.com/macros/s/AKfycbx5ogxawkUnuXJTMF8RTNXEteJGgG9IjEEnkD_0ZIyckg1humKKqB0o89gY3A88O8bVXQ/exec`
